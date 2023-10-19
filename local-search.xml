@@ -4,16 +4,45 @@
   
   
   <entry>
-    <title>src 和 href 的区别</title>
-    <link href="/2023/09/30/src-%E5%92%8C-href-%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
-    <url>/2023/09/30/src-%E5%92%8C-href-%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <title>浏览器插件之CORS Unblock</title>
+    <link href="/2023/10/19/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E4%B9%8BCORS-Unblock/"/>
+    <url>/2023/10/19/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E4%B9%8BCORS-Unblock/</url>
     
-    <content type="html"><![CDATA[<h1 id="src-和-href-的区别"><a href="#src-和-href-的区别" class="headerlink" title="src 和 href 的区别"></a>src 和 href 的区别</h1><p><code>src</code><strong>主要用于指定要加载的外部资源的路径</strong></p><p><code>href</code><strong>主要用于指定链接的目标资源的URL</strong></p><h2 id="src"><a href="#src" class="headerlink" title="src"></a>src</h2><ul><li>在<code>&lt;script&gt;</code>、<code>&lt;img&gt;</code>、<code>&lt;audio&gt;</code>、<code>&lt;video&gt;</code>等标签中使用</li><li>用于指定外部资源的源URL，浏览器需要获取并嵌入到当前文档中</li><li><code>src</code> 属性用于加载外部资源，如脚本、图片、视频、音频文件等</li></ul><h2 id="href"><a href="#href" class="headerlink" title="href"></a>href</h2><ul><li>在<code>&lt;a&gt;</code>、<code>&lt;link&gt;</code>和<code>&lt;area&gt;</code>等标签中使用</li><li>用于指定超链接的目标URL，它可以是其他网页、CSS文件、图片文件等</li><li><code>href</code> 属性用于定义超链接和资源的链接地址</li></ul><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><h3 id="请求资源类型不同"><a href="#请求资源类型不同" class="headerlink" title="请求资源类型不同"></a>请求资源类型不同</h3><ul><li><code>href</code>，超文本引用，用于建立文档与资源的联系，适用于：<code>&lt;link&gt;</code>、<code>&lt;a&gt;</code>、<code>&lt;base&gt;</code>等标签</li><li><code>src</code>，将其所指向的资源下载并应用到当前页面，适用于：<code>&lt;script&gt;</code>、<code>&lt;img&gt;</code>、<code>&lt;iframe&gt;</code>和<code>&lt;audio&gt;</code>等标签</li></ul><h3 id="作用结果不同"><a href="#作用结果不同" class="headerlink" title="作用结果不同"></a>作用结果不同</h3><ul><li><code>href</code>，用于文档与资源之间确立联系</li><li><code>src</code>，请求到的资源替换当前内容</li></ul><h3 id="浏览器解析不同"><a href="#浏览器解析不同" class="headerlink" title="浏览器解析不同"></a>浏览器解析不同</h3><ul><li><code>href</code>，将资源解析成css文件，并行加载请求资源，不会阻塞对当前文档的处理</li><li><code>src</code>，会暂停其他资源的处理，直到该资源加载、解析和执行完毕，将其所指向资源应用到当前內容。这也是为什么把js文件放在底部而不是放在头部的原因</li></ul><h3 id="语义不同"><a href="#语义不同" class="headerlink" title="语义不同"></a>语义不同</h3><ul><li><code>src</code>属性在页面渲染过程中会阻塞后续内容的加载，因为浏览器会优先加载并执行<code>src</code>对应的资源</li><li><code>href</code>属性不会阻塞后续内容的加载，因此适用于需要异步加载的资源，如样式表和字体文件等</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="浏览器插件之-CORS-Unblock"><a href="#浏览器插件之-CORS-Unblock" class="headerlink" title="浏览器插件之 CORS Unblock"></a>浏览器插件之 CORS Unblock</h1><ul><li>跨域</li></ul><p>跨域全称为 Cross-Origin Resource Sharing，意为跨域资源共享，是一种允许当前域（domain）的资源被其他域（domain）的脚本请求访问的机制，通常由于同源安全策略，浏览器会禁止这种跨域请求。</p><p>而我们所说的跨域问题是因为违反了浏览器的同源安全策略而产生的。</p><ul><li>同源安全策略</li></ul><p>同源安全策略是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到 XSS、CSRF 等攻击。</p><p>同源是指协议、域名、端口三者相同，即使两个不同的域名指向同一个 ip 地址也是非同源。</p><p>跨域并不是请求发不出去，请求能发出去，服务端能收到请求并正常返回结果，只是结果被浏览器拦截了。</p><h2 id="解决跨域的方法"><a href="#解决跨域的方法" class="headerlink" title="解决跨域的方法"></a>解决跨域的方法</h2><ul><li><p>jsonp：json with padding</p></li><li><p>配置后端：CORS</p></li><li><p>中间服务器代理</p></li><li><p>正向代理<br>正向代理是代理服务器对客户端进行代理，为客户端收发请求，使得真实客户端对目标服务器不可见</p></li><li><p>反向代理<br>反向代理是代理服务器对目标服务器进行代理，为目标服务器进行收发请求，使得真实服务器对客户端不可见，如：Nginx</p></li></ul><p>此前我碰到一个需求，给我一个图片的链接，需要下载图片下来然后用 canvas 在其之上作画，会碰到这个问题:</p><blockquote><p>Uncaught DOMException: Failed to execute ‘toDataURL’ on ‘HTMLCanvasElement’: Tainted canvases may not be exported.</p></blockquote><p>这是受限于 CORS 策略，会存在跨域问题，虽然可以使用图像，但是绘制到画布上会污染画布，一旦一个画布被污染,就无法提取画布的数据，比如无法使用使用画布 toBlob(),toDataURL(),或 getImageData()方法；当使用这些方法的时候 会抛出上面的安全错误</p><p>网上的解决办法是给图片 img 加上一个属性：<code>image.setAttribute(&#39;crossorigin&#39;, &#39;anonymous&#39;);</code><br>并且后端开启 CORS 即可，但是由于受限，无法及时开启后端跨域，因此在高人指点下找到了一款插件 CORS Unblock，这个插件可以很好在自己的浏览器中解决跨域问题</p><p>另外经过查阅知道，火狐浏览器有一个插件叫 CORS Everywhere，谷歌浏览器、Edge 用 <a href="https://webextension.org/listing/access-control.html">CORS Unblock</a> 插件，当然这个插件的功能远不止如此。</p>]]></content>
     
     
     <categories>
       
       <category>前端</category>
+      
+      <category>浏览器</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>跨域</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>src 和 href 的区别</title>
+    <link href="/2023/09/30/src-%E5%92%8C-href-%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <url>/2023/09/30/src-%E5%92%8C-href-%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    
+    <content type="html"><![CDATA[<h1 id="src-和-href-的区别"><a href="#src-和-href-的区别" class="headerlink" title="src 和 href 的区别"></a>src 和 href 的区别</h1><blockquote><p><code>src</code><strong>主要用于指定要加载的外部资源的路径</strong></p><p><code>href</code><strong>主要用于指定链接的目标资源的 URL</strong></p></blockquote><h2 id="src"><a href="#src" class="headerlink" title="src"></a>src</h2><ul><li>在<code>&lt;script&gt;</code>、<code>&lt;img&gt;</code>、<code>&lt;audio&gt;</code>、<code>&lt;video&gt;</code>等标签中使用</li><li>用于指定外部资源的源 URL，浏览器需要获取并嵌入到当前文档中</li><li><code>src</code> 属性用于加载外部资源，如脚本、图片、视频、音频文件等</li></ul><h2 id="href"><a href="#href" class="headerlink" title="href"></a>href</h2><ul><li>在<code>&lt;a&gt;</code>、<code>&lt;link&gt;</code>和<code>&lt;area&gt;</code>等标签中使用</li><li>用于指定超链接的目标 URL，它可以是其他网页、CSS 文件、图片文件等</li><li><code>href</code> 属性用于定义超链接和资源的链接地址</li></ul><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><h3 id="请求资源类型不同"><a href="#请求资源类型不同" class="headerlink" title="请求资源类型不同"></a>请求资源类型不同</h3><ul><li><code>href</code>，超文本引用，用于建立文档与资源的联系，适用于：<code>&lt;link&gt;</code>、<code>&lt;a&gt;</code>、<code>&lt;base&gt;</code>等标签</li><li><code>src</code>，将其所指向的资源下载并应用到当前页面，适用于：<code>&lt;script&gt;</code>、<code>&lt;img&gt;</code>、<code>&lt;iframe&gt;</code>和<code>&lt;audio&gt;</code>等标签</li></ul><h3 id="作用结果不同"><a href="#作用结果不同" class="headerlink" title="作用结果不同"></a>作用结果不同</h3><ul><li><code>href</code>，用于文档与资源之间确立联系</li><li><code>src</code>，请求到的资源替换当前内容</li></ul><h3 id="浏览器解析不同"><a href="#浏览器解析不同" class="headerlink" title="浏览器解析不同"></a>浏览器解析不同</h3><ul><li><code>href</code>，将资源解析成 css 文件，并行加载请求资源，不会阻塞对当前文档的处理</li><li><code>src</code>，会暂停其他资源的处理，直到该资源加载、解析和执行完毕，将其所指向资源应用到当前內容。这也是为什么把 js 文件放在底部而不是放在头部的原因</li></ul><h3 id="语义不同"><a href="#语义不同" class="headerlink" title="语义不同"></a>语义不同</h3><ul><li><code>src</code>属性在页面渲染过程中会阻塞后续内容的加载，因为浏览器会优先加载并执行<code>src</code>对应的资源</li><li><code>href</code>属性不会阻塞后续内容的加载，因此适用于需要异步加载的资源，如样式表和字体文件等</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+      <category>知识点</category>
       
     </categories>
     
@@ -23,19 +52,6 @@
       <tag>html</tag>
       
     </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="/2023/09/17/hello-world/"/>
-    <url>/2023/09/17/hello-world/</url>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
     
   </entry>
   
