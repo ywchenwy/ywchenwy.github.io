@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>深入理解CORS</title>
+    <link href="/2023/10/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3CORS/"/>
+    <url>/2023/10/23/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3CORS/</url>
+    
+    <content type="html"><![CDATA[<h2 id="什么是-CORS"><a href="#什么是-CORS" class="headerlink" title="什么是 CORS"></a>什么是 CORS</h2><p>Cross-Origin Resource Sharing，跨域资源共享，是一种基于 HTTP 头的机制，该机制通过允许服务器标示除了它自己以外的其他源，使得浏览器允许这些域加载自己的资源。</p><blockquote><p>跨域是不准确的，CORS 中，包括协议，域名，端口，只要其中之一不同，就是不同的源，因此也称跨源。</p></blockquote><ul><li>服务器：标识哪些源可以访问自己的资源</li><li>HTTP 头：Access-Control-Allow-Origin:* Origin: <a href="https://bilibili.com/">https://bilibili.com</a></li><li>浏览器：必须实现 CORS 相关的规范是否载入都有浏览器控制</li></ul><h2 id="CORS-的工作机制"><a href="#CORS-的工作机制" class="headerlink" title="CORS 的工作机制"></a>CORS 的工作机制</h2><p>script 标签载入了其他域的 JS 脚本，img 标签载入了其他域下的图片，不会作为 CORS 处理。</p><p>最常见适用 CORS 机制的是异步调用 Ajax，XMLHttpReques、Fetch API 等发起的跨域的 HTTP 请求，还有 Web 字体 (CSS 中通过 @font-face 使用跨源字体资源)，WebGL 贴图、使用 drawlmage() 将图片或视频画面绘制到 canvas</p><blockquote><p>简单请求，浏览器直接发起请求，适用于轻量服务，少了预检过程，提升响应速度；非简单请求，浏览器会先发起预检过程，适合于消耗资源的服务，可以减轻服务器压力</p></blockquote><h2 id="为什么需要-CORS"><a href="#为什么需要-CORS" class="headerlink" title="为什么需要 CORS"></a>为什么需要 CORS</h2><ol><li>保护服务器，这有助于减轻服务器的负载和风险</li><li>保护隐私，CORS 限制了敏感数据的访问</li><li>安全考虑，防止盗取用户数据或进行 CSRF 攻击</li><li>因为有实际的跨域请求需求，所以也不能完全禁止跨域请求</li></ol><h2 id="如何解决-CORS-问题"><a href="#如何解决-CORS-问题" class="headerlink" title="如何解决 CORS 问题"></a>如何解决 CORS 问题</h2><ol><li>同源策略（增加反向代理）, Nginx 或者 Apache</li><li>正确设置 CORS 标头，正确响应 Options 预检请求</li><li>JSONP</li></ol><h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a href="https://www.bilibili.com/video/BV13z4y1F717/?spm_id_from=333.880.my_history.page.click&vd_source=c4a9c068747c74e67180a135f9b6799f">彻底搞懂 CORS（跨域资源共享）相关内容 什么是 CORS 为什么需要 CORS 如何解决 CORS 问题 简单请求 预检</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+      <category>浏览器</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>跨域</tag>
+      
+      <tag>CORS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>浏览器插件之CORS Unblock</title>
     <link href="/2023/10/19/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E4%B9%8BCORS-Unblock/"/>
     <url>/2023/10/19/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6%E4%B9%8BCORS-Unblock/</url>
