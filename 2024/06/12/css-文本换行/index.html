@@ -24,7 +24,7 @@
 <meta property="og:description" content="常见的 css 文本换行方式  overflow-wrap  word-break  white-space  hyphens  line-break   1. overflow-wrapoverflow-wrap 用来说明当一个不能被分开的字符串太长而不能填充其包裹盒时，为防止其溢出，浏览器是否允许这样的单词中断换行 123overflow-wrap: normal;overflow-wrap:">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-12T06:17:28.000Z">
-<meta property="article:modified_time" content="2024-06-12T07:56:36.751Z">
+<meta property="article:modified_time" content="2024-06-12T07:59:24.011Z">
 <meta property="article:author" content="Cyw">
 <meta property="article:tag" content="css">
 <meta name="twitter:card" content="summary_large_image">
@@ -293,7 +293,7 @@
 <p><code>anywhere</code>：将在字符串之间的任意点来进行中断，如果行中没有其他可接受的断点，则不可断的字符串（如长词或 URL）可能会在任何时候换行。在断点处不会插入连字符。在计算最小内容内在大小时（min-content），会考虑由单词换行引入的软换行机会。</p>
 <p><code>break-word</code>：与 anywhere 值相同，如果行中没有其他可接受的断点，则允许在任意点将通常不可断的单词换行，但在计算最小内容内在大小时不考虑断字引入的软换行机会。</p>
 <blockquote>
-<p>_tips_：<code>overflow-wrap</code> 属性就是原来的<code>word-wrap</code>。<code>word-wrap</code>最初是一个没有前缀的 Microsoft 扩展。它不是 CSS 标准的一部分，尽管大多数浏览器都使用 word-wrap 这个名称来实现它。根据 CSS3 规范草案，浏览器应将<code>word-wrap</code>视为<code>overflow-wrap</code>属性的遗留名称别名，以确保兼容性。</p>
+<p><em>tips</em>：<code>overflow-wrap</code> 属性就是原来的<code>word-wrap</code>。<code>word-wrap</code>最初是一个没有前缀的 Microsoft 扩展。它不是 CSS 标准的一部分，尽管大多数浏览器都使用 word-wrap 这个名称来实现它。根据 CSS3 规范草案，浏览器应将<code>word-wrap</code>视为<code>overflow-wrap</code>属性的遗留名称别名，以确保兼容性。</p>
 </blockquote>
 <h2 id="2-word-break"><a href="#2-word-break" class="headerlink" title="2. word-break"></a>2. <code>word-break</code></h2><p>word-break 属性用于指定怎样在单词内进行断行。我们可以使用该属性在内容发生溢出的确切位置拆分单词并将其换行到下一行</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">word-break</span>: normal;<br><span class="hljs-attribute">word-break</span>: break-all;<br><span class="hljs-attribute">word-break</span>: keep-all;<br><span class="hljs-attribute">word-break</span>: break-word;<br></code></pre></td></tr></table></figure>
