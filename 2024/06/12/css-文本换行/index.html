@@ -24,7 +24,7 @@
 <meta property="og:description" content="常见的 css 文本换行方式  overflow-wrap  word-break  white-space  hyphens  line-break   1. overflow-wrapoverflow-wrap 用来说明当一个不能被分开的字符串太长而不能填充其包裹盒时，为防止其溢出，浏览器是否允许这样的单词中断换行 123overflow-wrap: normal;overflow-wrap:">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-12T06:17:28.000Z">
-<meta property="article:modified_time" content="2024-06-12T07:48:57.636Z">
+<meta property="article:modified_time" content="2024-06-12T07:56:36.751Z">
 <meta property="article:author" content="Cyw">
 <meta property="article:tag" content="css">
 <meta name="twitter:card" content="summary_large_image">
@@ -301,7 +301,7 @@
 <p><code>normal</code>：使用默认的断行规则</p>
 <p><code>break-all</code>：对于 non-CJK (CJK 指中文&#x2F;日文&#x2F;韩文) 文本，可在任意字符间断行，CJK 书写系统有自己的应用断点规则</p>
 <p><code>keep-all</code>：CJK 文本不断行。Non-CJK 文本表现同 <code>normaldsa</code></p>
-<p><code>break-word</code>：效果是<code>word-break: normal</code> 和 <code>overflow-wrap: anywhere</code> 的合，已废弃 🗑</p>
+<p><code>break-word</code>：效果是<code>word-break: normal</code> 和 <code>overflow-wrap: anywhere</code> 的结合，已废弃 🗑，但仍可以使用</p>
 <h2 id="3-white-space"><a href="#3-white-space" class="headerlink" title="3. white-space"></a>3. <code>white-space</code></h2><p><code>white-space</code> 属性是用来设置如何处理元素中的空白，空白字符是否合并，以及如何合并，是否换行，以及如何换行</p>
 <p><code>white-space</code> 属性可以被指定为从下面的值列表中选择的单个关键字，或者是表示 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/white-space-collapse"><code>white-space-collapse</code></a> 和 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap"><code>text-wrap</code></a> 属性的简写的两个值</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">white-space</span>: normal;<br><span class="hljs-attribute">white-space</span>: nowrap;<br><span class="hljs-attribute">white-space</span>: pre;<br><span class="hljs-attribute">white-space</span>: pre-wrap;<br><span class="hljs-attribute">white-space</span>: pre-line;<br><span class="hljs-attribute">white-space</span>: break-spaces;<br></code></pre></td></tr></table></figure>
@@ -386,9 +386,7 @@
 <p><code>auto</code>：使用默认的断行规则分解文本<br><code>loose</code>：使用尽可能松散（least restrictive）的断行规则分解文本。一般用于短行的情况，如报纸<br><code>normal</code>：使用最一般（common）的断行规则分解文本<br><code>strict</code>：使用最严格（stringent）的断行原则分解文本<br><code>anywhere</code>：可以使用 <code>line-break: anywhere</code> 来使长标点符号进行换行</p>
 <p><strong>参考</strong></p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7111880813230161933">https://juejin.cn/post/7111880813230161933</a></p>
-<p><a target="_blank" rel="noopener" href="https://codersblock.com/blog/deep-dive-into-text-wrapping-and-word-breaking/">https://codersblock.com/blog/deep-dive-into-text-wrapping-and-word-breaking/</a></p>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">https://developer.mozilla.org/zh-CN/docs/Web/CSS</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7111880813230161933">https://juejin.cn/post/7111880813230161933</a><br><a target="_blank" rel="noopener" href="https://codersblock.com/blog/deep-dive-into-text-wrapping-and-word-breaking/">https://codersblock.com/blog/deep-dive-into-text-wrapping-and-word-breaking/</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">https://developer.mozilla.org/zh-CN/docs/Web/CSS</a></p>
 </blockquote>
 
                 
@@ -491,8 +489,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/19/css%E9%9A%90%E8%97%8F%E6%BB%9A%E5%8A%A8%E6%9D%A1/" title="css隐藏滚动条">
-                        <span class="hidden-mobile">css隐藏滚动条</span>
+                      <a href="/2024/04/19/css-%E9%9A%90%E8%97%8F%E6%BB%9A%E5%8A%A8%E6%9D%A1/" title="css 隐藏滚动条">
+                        <span class="hidden-mobile">css 隐藏滚动条</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
