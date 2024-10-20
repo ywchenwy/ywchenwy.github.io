@@ -16,22 +16,24 @@
   <meta name="author" content="Cyw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="常见的 css 文本换行方式  overflow-wrap  word-break  white-space  hyphens  line-break   1. overflow-wrapoverflow-wrap 用来说明当一个不能被分开的字符串太长而不能填充其包裹盒时，为防止其溢出，浏览器是否允许这样的单词中断换行 123overflow-wrap: normal;overflow-wrap:">
+    <meta name="description" content="问题描述： 一段文本设置了 font-weight，但是在移动端中的浏览器中不显示加粗  原因：font-weight：normal | bold | lighter | bolder | number（1，1000） font-weight 数值采取离散式定义（使用 100 的整倍数）。数值为实数，非 100 的整数倍的值将被四舍五入转换为 100 的整倍数，遇到 50 时，将向上转换，如 15">
 <meta property="og:type" content="article">
-<meta property="og:title" content="css 文本换行">
-<meta property="og:url" content="https://ywchenwy.github.io/2024/06/12/css-%E6%96%87%E6%9C%AC%E6%8D%A2%E8%A1%8C/index.html">
+<meta property="og:title" content="安卓Android端font-weight不生效">
+<meta property="og:url" content="https://ywchenwy.github.io/2024/10/20/%E5%AE%89%E5%8D%93Android%E7%AB%AFfont-weight%E4%B8%8D%E7%94%9F%E6%95%88/index.html">
 <meta property="og:site_name" content="cyw&#39;s blog">
-<meta property="og:description" content="常见的 css 文本换行方式  overflow-wrap  word-break  white-space  hyphens  line-break   1. overflow-wrapoverflow-wrap 用来说明当一个不能被分开的字符串太长而不能填充其包裹盒时，为防止其溢出，浏览器是否允许这样的单词中断换行 123overflow-wrap: normal;overflow-wrap:">
+<meta property="og:description" content="问题描述： 一段文本设置了 font-weight，但是在移动端中的浏览器中不显示加粗  原因：font-weight：normal | bold | lighter | bolder | number（1，1000） font-weight 数值采取离散式定义（使用 100 的整倍数）。数值为实数，非 100 的整数倍的值将被四舍五入转换为 100 的整倍数，遇到 50 时，将向上转换，如 15">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-06-12T06:17:28.000Z">
-<meta property="article:modified_time" content="2024-06-12T07:59:24.011Z">
+<meta property="article:published_time" content="2024-10-20T07:49:55.000Z">
+<meta property="article:modified_time" content="2024-10-20T08:00:59.740Z">
 <meta property="article:author" content="Cyw">
-<meta property="article:tag" content="css">
+<meta property="article:tag" content="兼容性">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="font-weight">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>css 文本换行 - cyw&#39;s blog</title>
+  <title>安卓Android端font-weight不生效 - cyw&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="css 文本换行"></span>
+            <span id="subtitle" data-typed-text="安卓Android端font-weight不生效"></span>
           
         </div>
 
@@ -208,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-12 14:17" pubdate>
-          2024年6月12日 下午
+        <time datetime="2024-10-20 15:49" pubdate>
+          2024年10月20日 下午
         </time>
       </span>
     
@@ -220,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.8k 字
+          715 字
         
       </span>
     
@@ -231,7 +233,7 @@
         
         
         
-          24 分钟
+          6 分钟
         
       </span>
     
@@ -268,126 +270,35 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">css 文本换行</h1>
+            <h1 id="seo-header">安卓Android端font-weight不生效</h1>
             
             
               <div class="markdown-body">
                 
-                <p><strong>常见的 css 文本换行方式</strong></p>
+                <h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><blockquote>
+<p>一段文本设置了 font-weight，但是在移动端中的浏览器中不显示加粗</p>
+</blockquote>
+<h3 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h3><p><code>font-weight：normal | bold | lighter | bolder | number（1，1000）</code></p>
+<p><code>font-weight</code> 数值采取离散式定义（使用 100 的整倍数）。数值为实数，非 100 的整数倍的值将被四舍五入转换为 100 的整倍数，遇到 50 时，将向上转换，如 150 将转换为 200。</p>
+<p>实际上，所有这些数值关键字浏览器都是支持的，之所以没有看到任何粗细的变化，是因为某些系统里面<strong>缺乏对应粗细的字体</strong>。</p>
+<h3 id="回退机制"><a href="#回退机制" class="headerlink" title="回退机制"></a>回退机制</h3><p>如果指定的权重值不可用，则使用以下规则来确定实际呈现的权重：</p>
 <ul>
-<li><p><code>overflow-wrap</code></p>
+<li>如果指定的权重值在 400 和 500 之间（包括 400 和 500）：<ul>
+<li>按升序查找指定值与 500 之间的可用权重；</li>
+<li>如果未找到匹配项，按降序查找小于指定值的可用权重；</li>
+<li>如果未找到匹配项，按升序查找大于 500 的可用权重。</li>
+</ul>
 </li>
-<li><p><code>word-break</code></p>
-</li>
-<li><p><code>white-space</code></p>
-</li>
-<li><p><code>hyphens</code></p>
-</li>
-<li><p><code>line-break</code></p>
+<li>如果指定值小于 400，按降序查找小于指定值的可用权重。如果未找到匹配项，按升序查找大于指定值的可用权重（先尽可能的小，再尽可能的大）。</li>
+<li>如果指定值大于 500，按升序查找大于指定值的可用权重。如果未找到匹配项，按降序查找小于指定值的可用权重（先尽可能的大，再尽可能的小）。</li>
+</ul>
+<p>以上策略意味着，如果一个字体只有 normal 和 bold 两种粗细值选择，指定粗细值为 100-500 时，实际渲染时将使用 normal，指定粗细值为 501-900 时，实际渲染时将使用 bold 。</p>
+<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><ul>
+<li><p>移动端和 PC 端的字体都设置成通用，即 <code>font-weight: normal</code> 或者 <code>font-weight: bold</code>;</p>
+<p>优点：这两个值各种字体都可以取到，兼容性好，改动简单</p>
+<p>缺点：PC 端字体粗细没有明确划分，可能和设计图纸不同</p>
 </li>
 </ul>
-<h2 id="1-overflow-wrap"><a href="#1-overflow-wrap" class="headerlink" title="1. overflow-wrap"></a>1. <code>overflow-wrap</code></h2><p><code>overflow-wrap</code> 用来说明当一个不能被分开的字符串太长而不能填充其包裹盒时，为防止其溢出，浏览器是否允许这样的单词中断换行</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">overflow-wrap</span>: normal;<br><span class="hljs-attribute">overflow-wrap</span>: anywhere;<br><span class="hljs-attribute">overflow-wrap</span>: break-word;<br></code></pre></td></tr></table></figure>
-
-<p><code>normal</code>：使用默认的断行规则；对于英语和其他相关书写系统，换行符将出现在空格和连字符处</p>
-<p><code>anywhere</code>：将在字符串之间的任意点来进行中断，如果行中没有其他可接受的断点，则不可断的字符串（如长词或 URL）可能会在任何时候换行。在断点处不会插入连字符。在计算最小内容内在大小时（min-content），会考虑由单词换行引入的软换行机会。</p>
-<p><code>break-word</code>：与 anywhere 值相同，如果行中没有其他可接受的断点，则允许在任意点将通常不可断的单词换行，但在计算最小内容内在大小时不考虑断字引入的软换行机会。</p>
-<blockquote>
-<p><em>tips</em>：<code>overflow-wrap</code> 属性就是原来的<code>word-wrap</code>。<code>word-wrap</code>最初是一个没有前缀的 Microsoft 扩展。它不是 CSS 标准的一部分，尽管大多数浏览器都使用 word-wrap 这个名称来实现它。根据 CSS3 规范草案，浏览器应将<code>word-wrap</code>视为<code>overflow-wrap</code>属性的遗留名称别名，以确保兼容性。</p>
-</blockquote>
-<h2 id="2-word-break"><a href="#2-word-break" class="headerlink" title="2. word-break"></a>2. <code>word-break</code></h2><p>word-break 属性用于指定怎样在单词内进行断行。我们可以使用该属性在内容发生溢出的确切位置拆分单词并将其换行到下一行</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">word-break</span>: normal;<br><span class="hljs-attribute">word-break</span>: break-all;<br><span class="hljs-attribute">word-break</span>: keep-all;<br><span class="hljs-attribute">word-break</span>: break-word;<br></code></pre></td></tr></table></figure>
-
-<p><code>normal</code>：使用默认的断行规则</p>
-<p><code>break-all</code>：对于 non-CJK (CJK 指中文&#x2F;日文&#x2F;韩文) 文本，可在任意字符间断行，CJK 书写系统有自己的应用断点规则</p>
-<p><code>keep-all</code>：CJK 文本不断行。Non-CJK 文本表现同 <code>normaldsa</code></p>
-<p><code>break-word</code>：效果是<code>word-break: normal</code> 和 <code>overflow-wrap: anywhere</code> 的结合，已废弃 🗑，但仍可以使用</p>
-<h2 id="3-white-space"><a href="#3-white-space" class="headerlink" title="3. white-space"></a>3. <code>white-space</code></h2><p><code>white-space</code> 属性是用来设置如何处理元素中的空白，空白字符是否合并，以及如何合并，是否换行，以及如何换行</p>
-<p><code>white-space</code> 属性可以被指定为从下面的值列表中选择的单个关键字，或者是表示 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/white-space-collapse"><code>white-space-collapse</code></a> 和 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap"><code>text-wrap</code></a> 属性的简写的两个值</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">white-space</span>: normal;<br><span class="hljs-attribute">white-space</span>: nowrap;<br><span class="hljs-attribute">white-space</span>: pre;<br><span class="hljs-attribute">white-space</span>: pre-wrap;<br><span class="hljs-attribute">white-space</span>: pre-line;<br><span class="hljs-attribute">white-space</span>: break-spaces;<br></code></pre></td></tr></table></figure>
-
-<p><code>normal</code>：连续的空白符会被合并。源码中的换行符会被当作空白符来处理。并根据填充行框盒子的需要来换行<br><code>nowrap</code>：和 normal 一样合并空白符，但阻止源码中的文本换行<br><code>pre</code>：连续的空白符会被保留。仅在遇到换行符或 <code>&lt;br&gt;</code> 元素时才会换行<br><code>pre-wrap</code>：连续的空白符会被保留。在遇到换行符或 <code>&lt;br&gt;</code> 元素时，或者根据填充行框盒子的需要换行<br><code>pre-line</code>：连续的空白符会被合并。在遇到换行符或 <code>&lt;br&gt;</code> 元素时，或者根据填充行框盒子的需要换行。<br><code>break-spaces</code>：与 <code>pre-wrap</code> 的行为相同，除了：</p>
-<ul>
-<li>任何保留的空白序列总是占用空间，包括行末的。</li>
-<li>每个保留的空白字符后（包括空白字符之间）都可以被截断。</li>
-<li>这样保留的空间占用空间而不会挂起，从而影响盒子的固有尺寸（最小内容——<code>min-content</code>——大小和最大内容——<code>max-content</code>——大小）。</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center">换行符</th>
-<th align="center">空格和制表符</th>
-<th align="center">文本换行</th>
-<th align="center">行末空格</th>
-<th align="center">行末的其他空白分隔符</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>normal</code></td>
-<td align="center">合并</td>
-<td align="center">合并</td>
-<td align="center">换行</td>
-<td align="center">移除</td>
-<td align="center">挂起</td>
-</tr>
-<tr>
-<td align="center"><code>nowrap</code></td>
-<td align="center">合并</td>
-<td align="center">合并</td>
-<td align="center">不换行</td>
-<td align="center">移除</td>
-<td align="center">挂起</td>
-</tr>
-<tr>
-<td align="center"><code>pre</code></td>
-<td align="center">保留</td>
-<td align="center">保留</td>
-<td align="center">不换行</td>
-<td align="center">保留</td>
-<td align="center">不换行</td>
-</tr>
-<tr>
-<td align="center"><code>pre-wrap</code></td>
-<td align="center">保留</td>
-<td align="center">保留</td>
-<td align="center">换行</td>
-<td align="center">挂起</td>
-<td align="center">挂起</td>
-</tr>
-<tr>
-<td align="center"><code>pre-line</code></td>
-<td align="center">保留</td>
-<td align="center">合并</td>
-<td align="center">换行</td>
-<td align="center">移除</td>
-<td align="center">挂起</td>
-</tr>
-<tr>
-<td align="center"><code>break-spaces</code></td>
-<td align="center">保留</td>
-<td align="center">保留</td>
-<td align="center">换行</td>
-<td align="center">换行</td>
-<td align="center">换行</td>
-</tr>
-</tbody></table>
-<h2 id="4-hyphens"><a href="#4-hyphens" class="headerlink" title="4. hyphens"></a>4. <code>hyphens</code></h2><p><strong><code>hyphens</code></strong> 告知浏览器在换行时如何使用连字符连接单词。可以完全阻止使用连字符，也可以控制浏览器什么时候使用，或者让浏览器决定什么时候使用。</p>
-<p>连字规则具有语言特定性。在 HTML 中，语言由 lang 属性决定，浏览器只会在当前属性存在且有合适的连字字典可用的情况使用连字进行连接。在 XML 中，必须使用 <code>xml:lang</code> 属性。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">hyphens</span>: none;<br><span class="hljs-attribute">hyphens</span>: manual;<br><span class="hljs-attribute">hyphens</span>: auto;<br></code></pre></td></tr></table></figure>
-
-<p><code>none</code>：即便单词内有建议换行点也不会在那里换行。只会在空白符处换行。<br><code>manual</code>：只有当单词内存在建议换行点时，才会在该位置断开单词并使用连字符换行。<br><code>auto</code>：浏览器可以自由地在适当的断字点自动断词。</p>
-<p><strong>建议换行点</strong><br>有两个 Unicode 字符可以用于在文本中手动指定可能的换行点：</p>
-<p>U+2010（HYPHEN）<br>“硬”连字符表示一个可见的换行点。即使在指定的位置没有真正换行，连字符仍然会显示出来。</p>
-<p>U+00AD（SHY）<br>一个不可见的“软”连字符。此字符不会在屏幕上显示出来，而是表示在必要时浏览器可能会在该位置断开单词并出现连字符。在 HTML 中，可以使用 <code>&amp;shy;</code> 来插入软连字符。</p>
-<h2 id="5-line-break"><a href="#5-line-break" class="headerlink" title="5. line-break"></a>5. <code>line-break</code></h2><p><code>line-break</code>属性可以用来处理如何断开带有<strong>标点符号</strong>的中文、日文或韩文（CJK）文本的行。简而言之，该属性可以用来处理过长的标点符号</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">line-break</span>: auto;<br><span class="hljs-attribute">line-break</span>: loose;<br><span class="hljs-attribute">line-break</span>: normal;<br><span class="hljs-attribute">line-break</span>: strict;<br><span class="hljs-attribute">line-break</span>: anywhere;<br></code></pre></td></tr></table></figure>
-
-<p><code>auto</code>：使用默认的断行规则分解文本<br><code>loose</code>：使用尽可能松散（least restrictive）的断行规则分解文本。一般用于短行的情况，如报纸<br><code>normal</code>：使用最一般（common）的断行规则分解文本<br><code>strict</code>：使用最严格（stringent）的断行原则分解文本<br><code>anywhere</code>：可以使用 <code>line-break: anywhere</code> 来使长标点符号进行换行</p>
-<p><strong>参考</strong></p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7111880813230161933">https://juejin.cn/post/7111880813230161933</a><br><a target="_blank" rel="noopener" href="https://codersblock.com/blog/deep-dive-into-text-wrapping-and-word-breaking/">https://codersblock.com/blog/deep-dive-into-text-wrapping-and-word-breaking/</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">https://developer.mozilla.org/zh-CN/docs/Web/CSS</a></p>
-</blockquote>
 
                 
               </div>
@@ -411,7 +322,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E5%89%8D%E7%AB%AF/%E7%9F%A5%E8%AF%86%E7%82%B9/" class="category-chain-item">知识点</a>
+  <a href="/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="category-chain-item">浏览器</a>
   
   
 
@@ -428,7 +339,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/css/" class="print-no-link">#css</a>
+        <a href="/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/" class="print-no-link">#兼容性</a>
+      
+        <a href="/tags/Android/" class="print-no-link">#Android</a>
+      
+        <a href="/tags/font-weight/" class="print-no-link">#font-weight</a>
       
     </div>
   
@@ -440,8 +355,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>css 文本换行</div>
-      <div>https://ywchenwy.github.io/2024/06/12/css-文本换行/</div>
+      <div>安卓Android端font-weight不生效</div>
+      <div>https://ywchenwy.github.io/2024/10/20/安卓Android端font-weight不生效/</div>
     </div>
     <div class="license-meta">
       
@@ -453,7 +368,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年6月12日</div>
+          <div>2024年10月20日</div>
         </div>
       
       
@@ -485,18 +400,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/10/20/ios%E7%B3%BB%E7%BB%9F%E4%BC%AA%E7%B1%BB-active%E4%B8%8D%E7%94%9F%E6%95%88/" title="ios系统伪类:active不生效">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ios系统伪类:active不生效</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/19/css-%E9%9A%90%E8%97%8F%E6%BB%9A%E5%8A%A8%E6%9D%A1/" title="css 隐藏滚动条">
-                        <span class="hidden-mobile">css 隐藏滚动条</span>
+                      <a href="/2024/10/20/ios%E7%B3%BB%E7%BB%9F%E4%BC%AA%E7%B1%BB-active%E4%B8%8D%E7%94%9F%E6%95%88/" title="ios系统伪类:active不生效">
+                        <span class="hidden-mobile">ios系统伪类:active不生效</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

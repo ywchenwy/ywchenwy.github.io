@@ -4,6 +4,68 @@
   
   
   <entry>
+    <title>安卓Android端font-weight不生效</title>
+    <link href="/2024/10/20/%E5%AE%89%E5%8D%93Android%E7%AB%AFfont-weight%E4%B8%8D%E7%94%9F%E6%95%88/"/>
+    <url>/2024/10/20/%E5%AE%89%E5%8D%93Android%E7%AB%AFfont-weight%E4%B8%8D%E7%94%9F%E6%95%88/</url>
+    
+    <content type="html"><![CDATA[<h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><blockquote><p>一段文本设置了 font-weight，但是在移动端中的浏览器中不显示加粗</p></blockquote><h3 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h3><p><code>font-weight：normal | bold | lighter | bolder | number（1，1000）</code></p><p><code>font-weight</code> 数值采取离散式定义（使用 100 的整倍数）。数值为实数，非 100 的整数倍的值将被四舍五入转换为 100 的整倍数，遇到 50 时，将向上转换，如 150 将转换为 200。</p><p>实际上，所有这些数值关键字浏览器都是支持的，之所以没有看到任何粗细的变化，是因为某些系统里面<strong>缺乏对应粗细的字体</strong>。</p><h3 id="回退机制"><a href="#回退机制" class="headerlink" title="回退机制"></a>回退机制</h3><p>如果指定的权重值不可用，则使用以下规则来确定实际呈现的权重：</p><ul><li>如果指定的权重值在 400 和 500 之间（包括 400 和 500）：<ul><li>按升序查找指定值与 500 之间的可用权重；</li><li>如果未找到匹配项，按降序查找小于指定值的可用权重；</li><li>如果未找到匹配项，按升序查找大于 500 的可用权重。</li></ul></li><li>如果指定值小于 400，按降序查找小于指定值的可用权重。如果未找到匹配项，按升序查找大于指定值的可用权重（先尽可能的小，再尽可能的大）。</li><li>如果指定值大于 500，按升序查找大于指定值的可用权重。如果未找到匹配项，按降序查找小于指定值的可用权重（先尽可能的大，再尽可能的小）。</li></ul><p>以上策略意味着，如果一个字体只有 normal 和 bold 两种粗细值选择，指定粗细值为 100-500 时，实际渲染时将使用 normal，指定粗细值为 501-900 时，实际渲染时将使用 bold 。</p><h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><ul><li><p>移动端和 PC 端的字体都设置成通用，即 <code>font-weight: normal</code> 或者 <code>font-weight: bold</code>;</p><p>优点：这两个值各种字体都可以取到，兼容性好，改动简单</p><p>缺点：PC 端字体粗细没有明确划分，可能和设计图纸不同</p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+      <category>浏览器</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>兼容性</tag>
+      
+      <tag>Android</tag>
+      
+      <tag>font-weight</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>ios系统伪类:active不生效</title>
+    <link href="/2024/10/20/ios%E7%B3%BB%E7%BB%9F%E4%BC%AA%E7%B1%BB-active%E4%B8%8D%E7%94%9F%E6%95%88/"/>
+    <url>/2024/10/20/ios%E7%B3%BB%E7%BB%9F%E4%BC%AA%E7%B1%BB-active%E4%B8%8D%E7%94%9F%E6%95%88/</url>
+    
+    <content type="html"><![CDATA[<h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><blockquote><p>在用 h5 写前端页面适配 iOS 的 webview 发现一些兼容性问题</p></blockquote><ul><li>在 PC 浏览器中，按下鼠标即可激活元素 :active 生效，松开鼠标就会取消激活状态 :active 失效</li><li>在移动浏览器中，手指按下就会激活 :active 状态，手指松开就会取消激活状态 :active 失效</li><li>在 iOS 的 webview 时候发现点击效果 active 失效</li></ul><h3 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h3><p>在 ios 系统下如果该元素没有绑定 touchstart, touchmove, 或 touchend，元素就不会进入 :active 状态。 可以通过 addEventListener 或 ontouchstart&#x3D;“” 的方式给它（或者它的祖先元素）添加这个事件</p><h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><ul><li>在 body 标签上添加 ontouchstart 事件</li></ul><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span> <span class="hljs-attr">ontouchstart</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure><ul><li>在元素节点上添加 ontouchstart 事件</li></ul><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">ontouchstart</span>=<span class="hljs-string">&quot;() =&gt; &#123;&#125;&quot;</span>&gt;</span>click<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br></code></pre></td></tr></table></figure><ul><li>用 js 给全局加一个 touchstart 事件</li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;touchstart&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;&#125;, <span class="hljs-literal">false</span>)<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+      <category>浏览器</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>ios</tag>
+      
+      <tag>兼容性</tag>
+      
+      <tag>active</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>css 文本换行</title>
     <link href="/2024/06/12/css-%E6%96%87%E6%9C%AC%E6%8D%A2%E8%A1%8C/"/>
     <url>/2024/06/12/css-%E6%96%87%E6%9C%AC%E6%8D%A2%E8%A1%8C/</url>
