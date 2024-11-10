@@ -16,23 +16,25 @@
   <meta name="author" content="Cyw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在现代的 Web 开发中，前后端分离已成常态。随着实时需求的增加，前后端数据的流式传输（Streaming）技术成为一种重要手段，提升了用户体验的流畅性和数据交互的实时性。本文将简要介绍流式传输的概念、常用场景及其优势。 什么是流式传输？流式传输是一种持续发送数据的方式，不同于传统的请求-响应模式，数据可以在源和接收端间建立持续的连接，数据片段实时传输到客户端，极大减少了等待时间。适用于大文件、视">
+    <meta name="description" content="基于 HTTP 协议的前后端通信工具XMLHttpRequest（原生 JavaScript 对象）XMLHttpRequest (XHR) 是一个原生 JavaScript 对象，允许在不刷新页面的情况下请求特定 URL 并获取数据。 特性：  浏览器广泛支持 功能丰富：支持跟踪请求的状态、进度事件、文件上传、同步请求等 支持同步和异步请求 不支持 Promise API   Fetch（浏览器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前后端的流式传输">
-<meta property="og:url" content="https://ywchenwy.github.io/2024/11/10/%E5%89%8D%E5%90%8E%E7%AB%AF%E7%9A%84%E6%B5%81%E5%BC%8F%E4%BC%A0%E8%BE%93/index.html">
+<meta property="og:title" content="XMLHttpRequest、Fetch、Axios与AJAX">
+<meta property="og:url" content="https://ywchenwy.github.io/2024/11/10/XMLHttpRequest%E3%80%81Fetch%E3%80%81Axios%E4%B8%8EAJAX/index.html">
 <meta property="og:site_name" content="cyw&#39;s blog">
-<meta property="og:description" content="在现代的 Web 开发中，前后端分离已成常态。随着实时需求的增加，前后端数据的流式传输（Streaming）技术成为一种重要手段，提升了用户体验的流畅性和数据交互的实时性。本文将简要介绍流式传输的概念、常用场景及其优势。 什么是流式传输？流式传输是一种持续发送数据的方式，不同于传统的请求-响应模式，数据可以在源和接收端间建立持续的连接，数据片段实时传输到客户端，极大减少了等待时间。适用于大文件、视">
+<meta property="og:description" content="基于 HTTP 协议的前后端通信工具XMLHttpRequest（原生 JavaScript 对象）XMLHttpRequest (XHR) 是一个原生 JavaScript 对象，允许在不刷新页面的情况下请求特定 URL 并获取数据。 特性：  浏览器广泛支持 功能丰富：支持跟踪请求的状态、进度事件、文件上传、同步请求等 支持同步和异步请求 不支持 Promise API   Fetch（浏览器">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-11-10T08:18:13.000Z">
-<meta property="article:modified_time" content="2024-11-10T09:03:43.521Z">
+<meta property="article:published_time" content="2024-11-10T09:02:27.000Z">
+<meta property="article:modified_time" content="2024-11-10T09:12:28.440Z">
 <meta property="article:author" content="Cyw">
-<meta property="article:tag" content="Streaming">
-<meta property="article:tag" content="SSE">
+<meta property="article:tag" content="XMLHttpRequest">
+<meta property="article:tag" content="Fetch">
+<meta property="article:tag" content="Axios">
+<meta property="article:tag" content="AJAX">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>前后端的流式传输 - cyw&#39;s blog</title>
+  <title>XMLHttpRequest、Fetch、Axios与AJAX - cyw&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="前后端的流式传输"></span>
+            <span id="subtitle" data-typed-text="XMLHttpRequest、Fetch、Axios与AJAX"></span>
           
         </div>
 
@@ -209,7 +211,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-11-10 16:18" pubdate>
+        <time datetime="2024-11-10 17:02" pubdate>
           2024年11月10日 下午
         </time>
       </span>
@@ -221,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          1.5k 字
         
       </span>
     
@@ -232,7 +234,7 @@
         
         
         
-          22 分钟
+          13 分钟
         
       </span>
     
@@ -269,45 +271,139 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">前后端的流式传输</h1>
+            <h1 id="seo-header">XMLHttpRequest、Fetch、Axios与AJAX</h1>
             
             
               <div class="markdown-body">
                 
-                <p>在现代的 Web 开发中，前后端分离已成常态。随着实时需求的增加，前后端数据的流式传输（Streaming）技术成为一种重要手段，提升了用户体验的流畅性和数据交互的实时性。本文将简要介绍流式传输的概念、常用场景及其优势。</p>
-<h3 id="什么是流式传输？"><a href="#什么是流式传输？" class="headerlink" title="什么是流式传输？"></a>什么是流式传输？</h3><p>流式传输是一种持续发送数据的方式，不同于传统的请求-响应模式，数据可以在源和接收端间建立持续的连接，数据片段实时传输到客户端，极大减少了等待时间。适用于大文件、视频流、实时数据更新等场景。</p>
-<h3 id="常用技术及应用场景"><a href="#常用技术及应用场景" class="headerlink" title="常用技术及应用场景"></a>常用技术及应用场景</h3><ol>
-<li><strong>WebSocket</strong>：用于实现双向通信，适合实时聊天、在线游戏等场景。</li>
-<li><strong>Server-Sent Events</strong>：SSE，服务端推送消息给客户端，适用于实时通知和状态更新。</li>
-<li><strong>HTTP&#x2F;2 流</strong>：多路复用，支持多个数据流，适合文件传输和流式加载页面内容。</li>
+                <h3 id="基于-HTTP-协议的前后端通信工具"><a href="#基于-HTTP-协议的前后端通信工具" class="headerlink" title="基于 HTTP 协议的前后端通信工具"></a>基于 HTTP 协议的前后端通信工具</h3><h4 id="XMLHttpRequest（原生-JavaScript-对象）"><a href="#XMLHttpRequest（原生-JavaScript-对象）" class="headerlink" title="XMLHttpRequest（原生 JavaScript 对象）"></a>XMLHttpRequest（原生 JavaScript 对象）</h4><p><strong>XMLHttpRequest (XHR)</strong> 是一个原生 JavaScript 对象，允许在不刷新页面的情况下请求特定 URL 并获取数据。</p>
+<p><strong>特性</strong>：</p>
+<ul>
+<li>浏览器广泛支持</li>
+<li>功能丰富：支持跟踪请求的状态、进度事件、文件上传、同步请求等</li>
+<li>支持同步和异步请求</li>
+<li>不支持 Promise API</li>
+</ul>
+<hr>
+<h4 id="Fetch（浏览器原生-API）"><a href="#Fetch（浏览器原生-API）" class="headerlink" title="Fetch（浏览器原生 API）"></a>Fetch（浏览器原生 API）</h4><p><strong>Fetch API</strong> 提供了一个 JavaScript 接口，用于访问和操纵 HTTP 请求与响应。Fetch API 引入了全局 <code>fetch()</code> 方法，以简单、合理的方式异步获取网络资源，是 XMLHttpRequest 的理想替代方案。</p>
+<p><strong>特点</strong>：</p>
+<ul>
+<li><code>fetch()</code> 方法用于发起资源请求，返回一个表示请求响应的 Promise</li>
+<li>相比 XMLHttpRequest，语法更简洁</li>
+<li>支持 Promise API</li>
+<li>支持流式处理，允许逐步读取响应数据，适合大文件处理</li>
+</ul>
+<hr>
+<h4 id="Axios（第三方库）"><a href="#Axios（第三方库）" class="headerlink" title="Axios（第三方库）"></a>Axios（第三方库）</h4><p><strong>Axios</strong> 是一个基于 Promise 的网络请求库，兼容浏览器和 Node.js。Axios 的同构性允许同一套代码运行在浏览器和 Node.js 环境中。在服务器端，Axios 使用原生的 Node.js <code>http</code> 模块；在客户端使用 XMLHttpRequest。</p>
+<p><strong>其他特性</strong>：</p>
+<ul>
+<li>支持 Promise API</li>
+<li>拦截请求和响应</li>
+<li>转换请求和响应数据</li>
+<li>取消请求</li>
+<li>超时处理</li>
+<li>查询参数序列化，支持嵌套项处理</li>
+<li>自动将请求体序列化为 JSON、<code>multipart/form-data</code>、<code>application/x-www-form-urlencoded</code></li>
+<li>自动解析 JSON 数据</li>
+<li>支持获取请求进度信息（速度、剩余时间等）</li>
+<li>客户端支持防御 XSRF</li>
+</ul>
+<hr>
+<h4 id="Axios、Fetch-和-XMLHttpRequest-比较"><a href="#Axios、Fetch-和-XMLHttpRequest-比较" class="headerlink" title="Axios、Fetch 和 XMLHttpRequest 比较"></a>Axios、Fetch 和 XMLHttpRequest 比较</h4><table>
+<thead>
+<tr>
+<th align="center">特性</th>
+<th align="center">XMLHttpRequest</th>
+<th align="center">Fetch</th>
+<th align="center">Axios</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Promise 支持</td>
+<td align="center">否</td>
+<td align="center">是</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td align="center">语法简洁</td>
+<td align="center">否</td>
+<td align="center">是</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td align="center">自动 JSON 解析</td>
+<td align="center">否</td>
+<td align="center">否</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td align="center">错误处理</td>
+<td align="center">需要手动处理</td>
+<td align="center">需要手动检查状态码</td>
+<td align="center">自动处理 HTTP 错误</td>
+</tr>
+<tr>
+<td align="center">进度跟踪</td>
+<td align="center">是</td>
+<td align="center">否</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td align="center">拦截器</td>
+<td align="center">否</td>
+<td align="center">否</td>
+<td align="center">请求和响应拦截器</td>
+</tr>
+<tr>
+<td align="center">请求取消</td>
+<td align="center">需要手动实现</td>
+<td align="center">使用 AbortController</td>
+<td align="center">支持 AbortController</td>
+</tr>
+<tr>
+<td align="center">浏览器兼容性</td>
+<td align="center">所有浏览器</td>
+<td align="center">现代浏览器（需 polyfill）</td>
+<td align="center">现代浏览器（需引入库）</td>
+</tr>
+<tr>
+<td align="center">Node.js 支持</td>
+<td align="center">否</td>
+<td align="center">需 polyfill</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td align="center">体积</td>
+<td align="center">原生 JS 对象</td>
+<td align="center">原生 API</td>
+<td align="center">外部库，体积较大</td>
+</tr>
+<tr>
+<td align="center">流式处理响应</td>
+<td align="center">否</td>
+<td align="center">是（支持 ReadableStream）</td>
+<td align="center">否</td>
+</tr>
+<tr>
+<td align="center">同步请求</td>
+<td align="center">支持</td>
+<td align="center">不支持</td>
+<td align="center">不支持</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="Axios-为什么使用-XMLHttpRequest-而不是更现代的-Fetch？"><a href="#Axios-为什么使用-XMLHttpRequest-而不是更现代的-Fetch？" class="headerlink" title="Axios 为什么使用 XMLHttpRequest 而不是更现代的 Fetch？"></a>Axios 为什么使用 XMLHttpRequest 而不是更现代的 Fetch？</h4><ol>
+<li><strong>历史原因</strong>：Axios 于 2014 年开始维护，而 Promise 和 Fetch 是在 ES6（2015 年）中引入的，因此 Axios 的 Promise 支持也是在 2015 年才加上的。</li>
+<li><strong>兼容性</strong>：XMLHttpRequest 兼容性更高，支持旧版本浏览器。</li>
+<li><strong>功能</strong>：XMLHttpRequest 提供的底层功能更多。Axios 封装了 XMLHttpRequest，保留了底层功能的同时实现了类似 Fetch 的简洁语法。</li>
+<li><strong>技术更新</strong>：从 v0.22.0 开始，Axios 支持使用 Fetch API 的 <code>AbortController</code> 实现请求取消功能，替换了之前的 <code>CancelToken</code>。</li>
 </ol>
-<h3 id="流式传输的优势"><a href="#流式传输的优势" class="headerlink" title="流式传输的优势"></a>流式传输的优势</h3><ul>
-<li><strong>降低延迟</strong>：数据分块传输，实时更新，减少延迟。</li>
-<li><strong>减少资源占用</strong>：在需要时传输数据而非一次性加载，节省流量和内存。</li>
-<li><strong>提升用户体验</strong>：内容逐步呈现，增强交互体验。</li>
-</ul>
-<p>流式传输的技术结合前后端架构优化，不仅能满足高并发需求，还能提升用户的互动体验，是现代 Web 开发中的关键技术之一。</p>
-<h3 id="nginx-支持"><a href="#nginx-支持" class="headerlink" title="nginx 支持"></a>nginx 支持</h3><p>Nginx 是通过缓存响应内容来处理请求的。当 Nginx 接收到完整的响应后，才会将其发送给客户端，因此默认是不支持流式响应，需要手动开启。</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># nginx关键配置</span><br><span class="hljs-attribute">proxy_cache</span> <span class="hljs-literal">off</span>;  <span class="hljs-comment"># 关闭缓存；默认是：on</span><br><span class="hljs-attribute">proxy_buffering</span> <span class="hljs-literal">off</span>;  <span class="hljs-comment"># 关闭代理缓冲；默认是：on</span><br><span class="hljs-attribute">chunked_transfer_encoding</span> <span class="hljs-literal">on</span>;  <span class="hljs-comment"># 开启分块传输编码</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="前端相关代码"><a href="#前端相关代码" class="headerlink" title="前端相关代码"></a>前端相关代码</h3><p><a target="_blank" rel="noopener" href="https://github.com/KathyLab/mini-chatgpt">Koa+React 代码参考来自</a></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">PostStream</span>(<span class="hljs-params">controller, url, data</span>) &#123;<br>  <span class="hljs-keyword">const</span> token = <span class="hljs-title class_">Cookies</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;token&#x27;</span>)<br>  <span class="hljs-keyword">return</span> <span class="hljs-title function_">fetch</span>(url, &#123;<br>    <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,<br>    <span class="hljs-attr">headers</span>: &#123;<br>      <span class="hljs-title class_">Authorization</span>: token,<br>      <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span><br>    &#125;,<br>    <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(data),<br>    <span class="hljs-attr">signal</span>: controller.<span class="hljs-property">signal</span><br>  &#125;)<br>    .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span> (response.<span class="hljs-property">status</span> !== <span class="hljs-number">200</span>) &#123;<br>        <span class="hljs-keyword">throw</span> &#123; response &#125;<br>      &#125;<br>      <span class="hljs-keyword">return</span> response.<span class="hljs-property">body</span><br>    &#125;)<br>    .<span class="hljs-title function_">catch</span>(procReqError)<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">String</span>&#125; userPrompt prompt 问题</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">Function</span>&#125; updateMsgFun 更新消息的函数 接收一个参数，就是当前回复的所有文本</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns</span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">streamingReply</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params">userPrompt, updateMsgFun</span>) =&gt; &#123;<br>  <span class="hljs-keyword">const</span> controller = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AbortController</span>()<br><br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title class_">PostStream</span>(<br>      controller,<br>      <span class="hljs-string">`<span class="hljs-subst">$&#123;apiPrefix&#125;</span>/getAnswerByAI?stream=true`</span>,<br>      &#123; userPrompt &#125;<br>    )<br><br>    <span class="hljs-comment">// 得到流</span><br>    <span class="hljs-keyword">const</span> reader = response.<span class="hljs-title function_">getReader</span>()<br><br>    <span class="hljs-keyword">let</span> streamData = <span class="hljs-string">&#x27;&#x27;</span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>      <span class="hljs-keyword">const</span> &#123; done, value &#125; = <span class="hljs-keyword">await</span> reader.<span class="hljs-title function_">read</span>()<br>      <span class="hljs-keyword">if</span> (done) &#123;<br>        controller.<span class="hljs-title function_">abort</span>()<br>        <span class="hljs-keyword">break</span><br>      &#125;<br><br>      <span class="hljs-keyword">const</span> text = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TextDecoder</span>().<span class="hljs-title function_">decode</span>(value)<br>      <span class="hljs-keyword">const</span> pattern = <span class="hljs-regexp">/data:\s*(.*?)\s*\n\n/g</span><br>      <span class="hljs-keyword">const</span> match = text.<span class="hljs-title function_">matchAll</span>(pattern)<br><br>      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> m <span class="hljs-keyword">of</span> match) &#123;<br>        <span class="hljs-keyword">if</span> (m[<span class="hljs-number">1</span>] === <span class="hljs-string">&#x27;[DONE]&#x27;</span>) &#123;<br>          controller.<span class="hljs-title function_">abort</span>() <span class="hljs-comment">// 断开连接</span><br>          <span class="hljs-keyword">return</span><br>        &#125;<br>        <span class="hljs-keyword">const</span> s = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(m[<span class="hljs-number">1</span>])<br><br>        streamData += s.<span class="hljs-property">choices</span>[<span class="hljs-number">0</span>].<span class="hljs-property">delta</span>.<span class="hljs-property">content</span><br>        <span class="hljs-title function_">updateMsgFun</span>(streamData)<br>      &#125;<br>    &#125;<br>  &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error:&#x27;</span>, err)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h3 id="Server-Sent-Events-SSE-实现"><a href="#Server-Sent-Events-SSE-实现" class="headerlink" title="Server-Sent Events (SSE) 实现"></a>Server-Sent Events (SSE) 实现</h3><h4 id="前端关键点："><a href="#前端关键点：" class="headerlink" title="前端关键点："></a>前端关键点：</h4><ul>
-<li><strong>连接创建</strong>：使用 <code>new EventSource(url)</code> 创建 SSE 连接。SSE 自动重连，但要确保服务端对重连有支持。</li>
-<li><strong>事件处理</strong>：通过 <code>onmessage</code> 接收数据。也可以自定义事件类型，通过 <code>addEventListener</code> 监听。</li>
-<li><strong>错误处理</strong>：监听 <code>onerror</code> 事件，处理网络错误或服务端错误。</li>
-</ul>
-<h4 id="后端关键点："><a href="#后端关键点：" class="headerlink" title="后端关键点："></a>后端关键点：</h4><ul>
-<li><strong>持续输出</strong>：SSE 是单向的（从服务器到客户端），后端需要持续输出流数据，例如 <code>res.write(&quot;data: message\n\n&quot;)</code>。</li>
-<li><strong>内容类型</strong>：确保响应头 <code>Content-Type</code> 设置为 <code>text/event-stream</code>。</li>
-<li><strong>保持连接</strong>：设置合适的连接超时，确保连接长时间维持（如适当的 <code>keep-alive</code> 设置）。</li>
-</ul>
-<h4 id="易错点："><a href="#易错点：" class="headerlink" title="易错点："></a>易错点：</h4><ul>
-<li><strong>不设置响应头</strong>：若没有正确设置 <code>Content-Type</code>，浏览器无法识别 SSE 数据流。</li>
-<li><strong>丢失数据</strong>：若服务器重启或断开，客户端可能丢失数据，因此需要考虑容错策略。</li>
-<li><strong>连接超时</strong>：部分服务器可能会断开空闲连接，要设置合适的超时策略。</li>
-</ul>
+<hr>
+<h3 id="AJAX（Web-开发技术）"><a href="#AJAX（Web-开发技术）" class="headerlink" title="AJAX（Web 开发技术）"></a>AJAX（Web 开发技术）</h3><ol>
+<li><strong>AJAX</strong>（Asynchronous JavaScript And XML）是一种 Web 开发技术，允许在不重新加载整个页面的情况下通过异步 HTTP 请求从服务器获取内容，并更新页面的相关部分。</li>
+<li>最早 AJAX 是通过使用 XMLHttpRequest 实现的，但现代 Web 应用更倾向于使用 Fetch API 来实现 AJAX。</li>
+<li><strong>AJAX 的本质</strong>：AJAX 指的是通过 JavaScript 进行异步 HTTP 请求，而不是特定的工具或库。无论是 XMLHttpRequest、Fetch API 还是 Axios 都可以实现 AJAX 功能。</li>
+</ol>
 
                 
               </div>
@@ -348,9 +444,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Streaming/" class="print-no-link">#Streaming</a>
+        <a href="/tags/XMLHttpRequest/" class="print-no-link">#XMLHttpRequest</a>
       
-        <a href="/tags/SSE/" class="print-no-link">#SSE</a>
+        <a href="/tags/Fetch/" class="print-no-link">#Fetch</a>
+      
+        <a href="/tags/Axios/" class="print-no-link">#Axios</a>
+      
+        <a href="/tags/AJAX/" class="print-no-link">#AJAX</a>
       
     </div>
   
@@ -362,8 +462,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>前后端的流式传输</div>
-      <div>https://ywchenwy.github.io/2024/11/10/前后端的流式传输/</div>
+      <div>XMLHttpRequest、Fetch、Axios与AJAX</div>
+      <div>https://ywchenwy.github.io/2024/11/10/XMLHttpRequest、Fetch、Axios与AJAX/</div>
     </div>
     <div class="license-meta">
       
@@ -407,18 +507,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/11/10/XMLHttpRequest%E3%80%81Fetch%E3%80%81Axios%E4%B8%8EAJAX/" title="XMLHttpRequest、Fetch、Axios与AJAX">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">XMLHttpRequest、Fetch、Axios与AJAX</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/10/20/%E5%AE%89%E5%8D%93Android%E7%AB%AFfont-weight%E4%B8%8D%E7%94%9F%E6%95%88/" title="安卓Android端font-weight不生效">
-                        <span class="hidden-mobile">安卓Android端font-weight不生效</span>
+                      <a href="/2024/11/10/%E5%89%8D%E5%90%8E%E7%AB%AF%E7%9A%84%E6%B5%81%E5%BC%8F%E4%BC%A0%E8%BE%93/" title="前后端的流式传输">
+                        <span class="hidden-mobile">前后端的流式传输</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
