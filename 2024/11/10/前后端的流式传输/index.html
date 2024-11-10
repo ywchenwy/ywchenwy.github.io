@@ -16,24 +16,23 @@
   <meta name="author" content="Cyw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="问题描述： 一段文本设置了 font-weight，但是在移动端中的浏览器中不显示加粗  原因：font-weight：normal | bold | lighter | bolder | number（1，1000） font-weight 数值采取离散式定义（使用 100 的整倍数）。数值为实数，非 100 的整数倍的值将被四舍五入转换为 100 的整倍数，遇到 50 时，将向上转换，如 15">
+    <meta name="description" content="在现代的 Web 开发中，前后端分离已成常态。随着实时需求的增加，前后端数据的流式传输（Streaming）技术成为一种重要手段，提升了用户体验的流畅性和数据交互的实时性。本文将简要介绍流式传输的概念、常用场景及其优势。 什么是流式传输？流式传输是一种持续发送数据的方式，不同于传统的请求-响应模式，数据可以在源和接收端间建立持续的连接，数据片段实时传输到客户端，极大减少了等待时间。适用于大文件、视">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安卓Android端font-weight不生效">
-<meta property="og:url" content="https://ywchenwy.github.io/2024/10/20/%E5%AE%89%E5%8D%93Android%E7%AB%AFfont-weight%E4%B8%8D%E7%94%9F%E6%95%88/index.html">
+<meta property="og:title" content="前后端的流式传输">
+<meta property="og:url" content="https://ywchenwy.github.io/2024/11/10/%E5%89%8D%E5%90%8E%E7%AB%AF%E7%9A%84%E6%B5%81%E5%BC%8F%E4%BC%A0%E8%BE%93/index.html">
 <meta property="og:site_name" content="cyw&#39;s blog">
-<meta property="og:description" content="问题描述： 一段文本设置了 font-weight，但是在移动端中的浏览器中不显示加粗  原因：font-weight：normal | bold | lighter | bolder | number（1，1000） font-weight 数值采取离散式定义（使用 100 的整倍数）。数值为实数，非 100 的整数倍的值将被四舍五入转换为 100 的整倍数，遇到 50 时，将向上转换，如 15">
+<meta property="og:description" content="在现代的 Web 开发中，前后端分离已成常态。随着实时需求的增加，前后端数据的流式传输（Streaming）技术成为一种重要手段，提升了用户体验的流畅性和数据交互的实时性。本文将简要介绍流式传输的概念、常用场景及其优势。 什么是流式传输？流式传输是一种持续发送数据的方式，不同于传统的请求-响应模式，数据可以在源和接收端间建立持续的连接，数据片段实时传输到客户端，极大减少了等待时间。适用于大文件、视">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-10-20T07:49:55.000Z">
-<meta property="article:modified_time" content="2024-10-20T08:00:59.740Z">
+<meta property="article:published_time" content="2024-11-10T08:18:13.000Z">
+<meta property="article:modified_time" content="2024-11-10T08:39:40.968Z">
 <meta property="article:author" content="Cyw">
-<meta property="article:tag" content="兼容性">
-<meta property="article:tag" content="Android">
-<meta property="article:tag" content="font-weight">
+<meta property="article:tag" content="Streaming">
+<meta property="article:tag" content="SSE">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>安卓Android端font-weight不生效 - cyw&#39;s blog</title>
+  <title>前后端的流式传输 - cyw&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="安卓Android端font-weight不生效"></span>
+            <span id="subtitle" data-typed-text="前后端的流式传输"></span>
           
         </div>
 
@@ -210,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-10-20 15:49" pubdate>
-          2024年10月20日 下午
+        <time datetime="2024-11-10 16:18" pubdate>
+          2024年11月10日 下午
         </time>
       </span>
     
@@ -222,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          715 字
+          2.6k 字
         
       </span>
     
@@ -233,7 +232,7 @@
         
         
         
-          6 分钟
+          22 分钟
         
       </span>
     
@@ -270,34 +269,44 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">安卓Android端font-weight不生效</h1>
+            <h1 id="seo-header">前后端的流式传输</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><blockquote>
-<p>一段文本设置了 font-weight，但是在移动端中的浏览器中不显示加粗</p>
-</blockquote>
-<h3 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h3><p><code>font-weight：normal | bold | lighter | bolder | number（1，1000）</code></p>
-<p><code>font-weight</code> 数值采取离散式定义（使用 100 的整倍数）。数值为实数，非 100 的整数倍的值将被四舍五入转换为 100 的整倍数，遇到 50 时，将向上转换，如 150 将转换为 200。</p>
-<p>实际上，所有这些数值关键字浏览器都是支持的，之所以没有看到任何粗细的变化，是因为某些系统里面<strong>缺乏对应粗细的字体</strong>。</p>
-<h3 id="回退机制"><a href="#回退机制" class="headerlink" title="回退机制"></a>回退机制</h3><p>如果指定的权重值不可用，则使用以下规则来确定实际呈现的权重：</p>
-<ul>
-<li>如果指定的权重值在 400 和 500 之间（包括 400 和 500）：<ul>
-<li>按升序查找指定值与 500 之间的可用权重；</li>
-<li>如果未找到匹配项，按降序查找小于指定值的可用权重；</li>
-<li>如果未找到匹配项，按升序查找大于 500 的可用权重。</li>
+                <p>在现代的 Web 开发中，前后端分离已成常态。随着实时需求的增加，前后端数据的流式传输（Streaming）技术成为一种重要手段，提升了用户体验的流畅性和数据交互的实时性。本文将简要介绍流式传输的概念、常用场景及其优势。</p>
+<h3 id="什么是流式传输？"><a href="#什么是流式传输？" class="headerlink" title="什么是流式传输？"></a>什么是流式传输？</h3><p>流式传输是一种持续发送数据的方式，不同于传统的请求-响应模式，数据可以在源和接收端间建立持续的连接，数据片段实时传输到客户端，极大减少了等待时间。适用于大文件、视频流、实时数据更新等场景。</p>
+<h3 id="常用技术及应用场景"><a href="#常用技术及应用场景" class="headerlink" title="常用技术及应用场景"></a>常用技术及应用场景</h3><ol>
+<li><strong>WebSocket</strong>：用于实现双向通信，适合实时聊天、在线游戏等场景。</li>
+<li>**Server-Sent Events (SSE)**：服务端推送消息给客户端，适用于实时通知和状态更新。</li>
+<li><strong>HTTP&#x2F;2 流</strong>：多路复用，支持多个数据流，适合文件传输和流式加载页面内容。</li>
+</ol>
+<h3 id="流式传输的优势"><a href="#流式传输的优势" class="headerlink" title="流式传输的优势"></a>流式传输的优势</h3><ul>
+<li><strong>降低延迟</strong>：数据分块传输，实时更新，减少延迟。</li>
+<li><strong>减少资源占用</strong>：在需要时传输数据而非一次性加载，节省流量和内存。</li>
+<li><strong>提升用户体验</strong>：内容逐步呈现，增强交互体验。</li>
 </ul>
-</li>
-<li>如果指定值小于 400，按降序查找小于指定值的可用权重。如果未找到匹配项，按升序查找大于指定值的可用权重（先尽可能的小，再尽可能的大）。</li>
-<li>如果指定值大于 500，按升序查找大于指定值的可用权重。如果未找到匹配项，按降序查找小于指定值的可用权重（先尽可能的大，再尽可能的小）。</li>
+<p>流式传输的技术结合前后端架构优化，不仅能满足高并发需求，还能提升用户的互动体验，是现代 Web 开发中的关键技术之一。</p>
+<h3 id="nginx-支持"><a href="#nginx-支持" class="headerlink" title="nginx 支持"></a>nginx 支持</h3><p>Nginx 是通过缓存响应内容来处理请求的。当 Nginx 接收到完整的响应后，才会将其发送给客户端，因此默认是不支持流式响应，需要手动开启。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># nginx关键配置</span><br><span class="hljs-attribute">proxy_cache</span> <span class="hljs-literal">off</span>;  <span class="hljs-comment"># 关闭缓存；默认是：on</span><br><span class="hljs-attribute">proxy_buffering</span> <span class="hljs-literal">off</span>;  <span class="hljs-comment"># 关闭代理缓冲；默认是：on</span><br><span class="hljs-attribute">chunked_transfer_encoding</span> <span class="hljs-literal">on</span>;  <span class="hljs-comment"># 开启分块传输编码</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="前端相关代码"><a href="#前端相关代码" class="headerlink" title="前端相关代码"></a>前端相关代码</h3><p><a target="_blank" rel="noopener" href="https://github.com/KathyLab/mini-chatgpt">Koa+React代码参考来自</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">PostStream</span>(<span class="hljs-params">controller, url, data</span>) &#123;<br>  <span class="hljs-keyword">const</span> token = <span class="hljs-title class_">Cookies</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;token&#x27;</span>)<br>  <span class="hljs-keyword">return</span> <span class="hljs-title function_">fetch</span>(url, &#123;<br>    <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,<br>    <span class="hljs-attr">headers</span>: &#123;<br>      <span class="hljs-title class_">Authorization</span>: token,<br>      <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span><br>    &#125;,<br>    <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(data),<br>    <span class="hljs-attr">signal</span>: controller.<span class="hljs-property">signal</span><br>  &#125;)<br>    .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span> (response.<span class="hljs-property">status</span> !== <span class="hljs-number">200</span>) &#123;<br>        <span class="hljs-keyword">throw</span> &#123; response &#125;<br>      &#125;<br>      <span class="hljs-keyword">return</span> response.<span class="hljs-property">body</span><br>    &#125;)<br>    .<span class="hljs-title function_">catch</span>(procReqError)<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">String</span>&#125; userPrompt prompt 问题</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">Function</span>&#125; updateMsgFun 更新消息的函数 接收一个参数，就是当前回复的所有文本</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns</span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">streamingReply</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params">userPrompt, updateMsgFun</span>) =&gt; &#123;<br>  <span class="hljs-keyword">const</span> controller = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AbortController</span>()<br><br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title class_">PostStream</span>(<br>      controller,<br>      <span class="hljs-string">`<span class="hljs-subst">$&#123;apiPrefix&#125;</span>/getAnswerByAI?stream=true`</span>,<br>      &#123; userPrompt &#125;<br>    )<br><br>    <span class="hljs-comment">// 得到流</span><br>    <span class="hljs-keyword">const</span> reader = response.<span class="hljs-title function_">getReader</span>()<br><br>    <span class="hljs-keyword">let</span> streamData = <span class="hljs-string">&#x27;&#x27;</span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>      <span class="hljs-keyword">const</span> &#123; done, value &#125; = <span class="hljs-keyword">await</span> reader.<span class="hljs-title function_">read</span>()<br>      <span class="hljs-keyword">if</span> (done) &#123;<br>        controller.<span class="hljs-title function_">abort</span>()<br>        <span class="hljs-keyword">break</span><br>      &#125;<br><br>      <span class="hljs-keyword">const</span> text = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TextDecoder</span>().<span class="hljs-title function_">decode</span>(value)<br>      <span class="hljs-keyword">const</span> pattern = <span class="hljs-regexp">/data:\s*(.*?)\s*\n\n/g</span><br>      <span class="hljs-keyword">const</span> match = text.<span class="hljs-title function_">matchAll</span>(pattern)<br><br>      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> m <span class="hljs-keyword">of</span> match) &#123;<br>        <span class="hljs-keyword">if</span> (m[<span class="hljs-number">1</span>] === <span class="hljs-string">&#x27;[DONE]&#x27;</span>) &#123;<br>          controller.<span class="hljs-title function_">abort</span>() <span class="hljs-comment">// 断开连接</span><br>          <span class="hljs-keyword">return</span><br>        &#125;<br>        <span class="hljs-keyword">const</span> s = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(m[<span class="hljs-number">1</span>])<br><br>        streamData += s.<span class="hljs-property">choices</span>[<span class="hljs-number">0</span>].<span class="hljs-property">delta</span>.<span class="hljs-property">content</span><br>        <span class="hljs-title function_">updateMsgFun</span>(streamData)<br>      &#125;<br>    &#125;<br>  &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error:&#x27;</span>, err)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="Server-Sent-Events-SSE-实现"><a href="#Server-Sent-Events-SSE-实现" class="headerlink" title="Server-Sent Events (SSE) 实现"></a>Server-Sent Events (SSE) 实现</h3><h4 id="前端关键点："><a href="#前端关键点：" class="headerlink" title="前端关键点："></a>前端关键点：</h4><ul>
+<li><strong>连接创建</strong>：使用 <code>new EventSource(url)</code> 创建 SSE 连接。SSE 自动重连，但要确保服务端对重连有支持。</li>
+<li><strong>事件处理</strong>：通过 <code>onmessage</code> 接收数据。也可以自定义事件类型，通过 <code>addEventListener</code> 监听。</li>
+<li><strong>错误处理</strong>：监听 <code>onerror</code> 事件，处理网络错误或服务端错误。</li>
 </ul>
-<p>以上策略意味着，如果一个字体只有 normal 和 bold 两种粗细值选择，指定粗细值为 100-500 时，实际渲染时将使用 normal，指定粗细值为 501-900 时，实际渲染时将使用 bold 。</p>
-<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><ul>
-<li><p>移动端和 PC 端的字体都设置成通用，即 <code>font-weight: normal</code> 或者 <code>font-weight: bold</code>;</p>
-<p>优点：这两个值各种字体都可以取到，兼容性好，改动简单</p>
-<p>缺点：PC 端字体粗细没有明确划分，可能和设计图纸不同</p>
-</li>
+<h4 id="后端关键点："><a href="#后端关键点：" class="headerlink" title="后端关键点："></a>后端关键点：</h4><ul>
+<li><strong>持续输出</strong>：SSE 是单向的（从服务器到客户端），后端需要持续输出流数据，例如 <code>res.write(&quot;data: message\n\n&quot;)</code>。</li>
+<li><strong>内容类型</strong>：确保响应头 <code>Content-Type</code> 设置为 <code>text/event-stream</code>。</li>
+<li><strong>保持连接</strong>：设置合适的连接超时，确保连接长时间维持（如适当的 <code>keep-alive</code> 设置）。</li>
+</ul>
+<h4 id="易错点："><a href="#易错点：" class="headerlink" title="易错点："></a>易错点：</h4><ul>
+<li><strong>不设置响应头</strong>：若没有正确设置 <code>Content-Type</code>，浏览器无法识别 SSE 数据流。</li>
+<li><strong>丢失数据</strong>：若服务器重启或断开，客户端可能丢失数据，因此需要考虑容错策略。</li>
+<li><strong>连接超时</strong>：部分服务器可能会断开空闲连接，要设置合适的超时策略。</li>
 </ul>
 
                 
@@ -317,15 +326,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
+  <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E9%80%9A%E4%BF%A1/" class="category-chain-item">前后端通信</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="category-chain-item">浏览器</a>
-  
-  
-
   
 
       </span>
@@ -339,11 +341,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/" class="print-no-link">#兼容性</a>
+        <a href="/tags/Streaming/" class="print-no-link">#Streaming</a>
       
-        <a href="/tags/Android/" class="print-no-link">#Android</a>
-      
-        <a href="/tags/font-weight/" class="print-no-link">#font-weight</a>
+        <a href="/tags/SSE/" class="print-no-link">#SSE</a>
       
     </div>
   
@@ -355,8 +355,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>安卓Android端font-weight不生效</div>
-      <div>https://ywchenwy.github.io/2024/10/20/安卓Android端font-weight不生效/</div>
+      <div>前后端的流式传输</div>
+      <div>https://ywchenwy.github.io/2024/11/10/前后端的流式传输/</div>
     </div>
     <div class="license-meta">
       
@@ -368,7 +368,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年10月20日</div>
+          <div>2024年11月10日</div>
         </div>
       
       
@@ -400,18 +400,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/11/10/%E5%89%8D%E5%90%8E%E7%AB%AF%E7%9A%84%E6%B5%81%E5%BC%8F%E4%BC%A0%E8%BE%93/" title="前后端的流式传输">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">前后端的流式传输</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/10/20/ios%E7%B3%BB%E7%BB%9F%E4%BC%AA%E7%B1%BB-active%E4%B8%8D%E7%94%9F%E6%95%88/" title="ios系统伪类:active不生效">
-                        <span class="hidden-mobile">ios系统伪类:active不生效</span>
+                      <a href="/2024/10/20/%E5%AE%89%E5%8D%93Android%E7%AB%AFfont-weight%E4%B8%8D%E7%94%9F%E6%95%88/" title="安卓Android端font-weight不生效">
+                        <span class="hidden-mobile">安卓Android端font-weight不生效</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
