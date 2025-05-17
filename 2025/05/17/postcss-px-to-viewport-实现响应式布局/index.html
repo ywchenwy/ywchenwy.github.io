@@ -16,24 +16,23 @@
   <meta name="author" content="Cyw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在编写跨平台文本文件、处理流数据或日志文件时， \r、\n 和 \r\n 是我们常遇到的行尾符。 1. 行尾符的起源行尾符的设计可以追溯到机械打字机时代。当时，行尾是分为两个步骤的：  回车（Carriage Return）：将打字头移动到当前行的行首。 换行（Line Feed）：将打字纸向上滚动一行，准备书写新行的内容。  早期的计算机系统借鉴了这种机制，分别使用回车符 \r 和换行符 \n">
+    <meta name="description" content="响应式设计是适配多种设备屏幕尺寸的关键。传统的像素（px）单位在不同设备上无法动态缩放，需要手动调整样式以适配移动端和桌面端。postcss-px-to-viewport是一个 PostCSS 插件，它们能将 CSS 中的 px 单位自动转换为视口单位（如 vw、vh、vmin、vmax），从而简化响应式布局开发流程。 什么是 PostCSS 和视口单位PostCSS 是一个基于 JavaScri">
 <meta property="og:type" content="article">
-<meta property="og:title" content="换行回车">
-<meta property="og:url" content="https://ywchenwy.github.io/2024/11/11/%E6%8D%A2%E8%A1%8C%E5%9B%9E%E8%BD%A6/index.html">
+<meta property="og:title" content="postcss-px-to-viewport 实现响应式布局">
+<meta property="og:url" content="https://ywchenwy.github.io/2025/05/17/postcss-px-to-viewport-%E5%AE%9E%E7%8E%B0%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/index.html">
 <meta property="og:site_name" content="cyw&#39;s blog">
-<meta property="og:description" content="在编写跨平台文本文件、处理流数据或日志文件时， \r、\n 和 \r\n 是我们常遇到的行尾符。 1. 行尾符的起源行尾符的设计可以追溯到机械打字机时代。当时，行尾是分为两个步骤的：  回车（Carriage Return）：将打字头移动到当前行的行首。 换行（Line Feed）：将打字纸向上滚动一行，准备书写新行的内容。  早期的计算机系统借鉴了这种机制，分别使用回车符 \r 和换行符 \n">
+<meta property="og:description" content="响应式设计是适配多种设备屏幕尺寸的关键。传统的像素（px）单位在不同设备上无法动态缩放，需要手动调整样式以适配移动端和桌面端。postcss-px-to-viewport是一个 PostCSS 插件，它们能将 CSS 中的 px 单位自动转换为视口单位（如 vw、vh、vmin、vmax），从而简化响应式布局开发流程。 什么是 PostCSS 和视口单位PostCSS 是一个基于 JavaScri">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-11-11T13:53:39.000Z">
-<meta property="article:modified_time" content="2024-11-11T14:22:03.418Z">
+<meta property="article:published_time" content="2025-05-17T05:10:15.000Z">
+<meta property="article:modified_time" content="2025-05-17T05:30:08.502Z">
 <meta property="article:author" content="Cyw">
-<meta property="article:tag" content="LF">
-<meta property="article:tag" content="CR">
-<meta property="article:tag" content="CRLF">
+<meta property="article:tag" content="css">
+<meta property="article:tag" content="postcss">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>换行回车 - cyw&#39;s blog</title>
+  <title>postcss-px-to-viewport 实现响应式布局 - cyw&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="换行回车"></span>
+            <span id="subtitle" data-typed-text="postcss-px-to-viewport 实现响应式布局"></span>
           
         </div>
 
@@ -210,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-11-11 21:53" pubdate>
-          2024年11月11日 晚上
+        <time datetime="2025-05-17 13:10" pubdate>
+          2025年5月17日 下午
         </time>
       </span>
     
@@ -222,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          910 字
+          2.8k 字
         
       </span>
     
@@ -233,7 +232,7 @@
         
         
         
-          8 分钟
+          24 分钟
         
       </span>
     
@@ -270,45 +269,45 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">换行回车</h1>
+            <h1 id="seo-header">postcss-px-to-viewport 实现响应式布局</h1>
             
             
               <div class="markdown-body">
                 
-                <p>在编写跨平台文本文件、处理流数据或日志文件时，<code> \r</code>、<code>\n</code> 和 <code>\r\n</code> 是我们常遇到的行尾符。</p>
-<h3 id="1-行尾符的起源"><a href="#1-行尾符的起源" class="headerlink" title="1. 行尾符的起源"></a>1. 行尾符的起源</h3><p>行尾符的设计可以追溯到机械打字机时代。当时，行尾是分为两个步骤的：</p>
+                <p>响应式设计是适配多种设备屏幕尺寸的关键。传统的像素（px）单位在不同设备上无法动态缩放，需要手动调整样式以适配移动端和桌面端。<code>postcss-px-to-viewport</code>是一个 PostCSS 插件，它们能将 CSS 中的 px 单位自动转换为视口单位（如 vw、vh、vmin、vmax），从而简化响应式布局开发流程。</p>
+<h3 id="什么是-PostCSS-和视口单位"><a href="#什么是-PostCSS-和视口单位" class="headerlink" title="什么是 PostCSS 和视口单位"></a>什么是 PostCSS 和视口单位</h3><p><a target="_blank" rel="noopener" href="https://postcss.org/">PostCSS</a> 是一个基于 JavaScript 的 CSS 处理工具，通过插件机制支持 CSS 转换、自动添加前缀、语法检查等功能。它被广泛应用于现代前端开发，兼容 Webpack、Vite 等构建工具。</p>
+<p>视口单位（如 vw、vh）是相对于浏览器视口尺寸的相对单位：</p>
 <ul>
-<li><strong>回车（Carriage Return）</strong>：将打字头移动到当前行的行首。</li>
-<li><strong>换行（Line Feed）</strong>：将打字纸向上滚动一行，准备书写新行的内容。</li>
+<li><strong>1vw</strong>：等于视口宽度的 1&#x2F;100。</li>
+<li><strong>1vh</strong>：等于视口高度的 1&#x2F;100。</li>
+<li><strong>vmin&#x2F;vmax</strong>：分别取视口宽高中的较小值或较大值的 1&#x2F;100。</li>
 </ul>
-<p>早期的计算机系统借鉴了这种机制，分别使用<strong>回车符 <code>\r</code></strong> 和<strong>换行符 <code>\n</code></strong> ，但不同操作系统有各自的行尾符表示方式，导致了如今的差异。</p>
-<hr>
-<h3 id="2-n、-r-和-r-n-的含义"><a href="#2-n、-r-和-r-n-的含义" class="headerlink" title="2. \n、\r 和 \r\n 的含义"></a>2. <code>\n</code>、<code>\r</code> 和 <code>\r\n</code> 的含义</h3><ul>
-<li><strong><code>\n</code> (Line Feed, LF)</strong> ：用于换行，将光标移动到下一行的行首。</li>
-<li><strong><code>\r</code> (Carriage Return, CR)</strong> ：用于回车，将光标移到当前行的行首。</li>
-<li><strong><code>\r\n</code> (CR+LF)</strong> ：在某些系统中表示完整的“回车+换行”操作，即将光标移动到下一行的行首。</li>
-</ul>
-<hr>
-<h3 id="3-不同系统中的行尾符"><a href="#3-不同系统中的行尾符" class="headerlink" title="3. 不同系统中的行尾符"></a>3. 不同系统中的行尾符</h3><p>不同操作系统对行尾符的处理方式有所不同：</p>
+<h3 id="postcss-px-to-viewport"><a href="#postcss-px-to-viewport" class="headerlink" title="postcss-px-to-viewport"></a>postcss-px-to-viewport</h3><p><code>postcss-px-to-viewport</code> 是一个流行的 PostCSS 插件，旨在将 CSS 中的 px 单位转换为视口单位。它特别适合需要基于单一设计尺寸（如移动端 375px 宽的设计稿）创建可扩展界面的项目。该插件由 Evrone 开发，支持多种视口单位（vw、vh、vmin、vmax），并提供丰富的配置选项以控制转换行为。<a target="_blank" rel="noopener" href="https://github.com/evrone/postcss-px-to-viewport">postcss-px-to-viewport</a></p>
+<p><strong>特点</strong>：</p>
 <ul>
-<li><strong>Unix&#x2F;Linux 系统</strong>：使用 <code>\n</code> 表示行尾符。这种方式最简洁且高效，也被现代 macOS 系统所采用。</li>
-<li><strong>Windows 系统</strong>：使用 <code>\r\n</code> 表示行尾符，主要是为了保持对 DOS 系统的兼容性。</li>
-<li><strong>旧式 Mac OS 系统</strong>：在 macOS 9 及之前的版本中使用 <code>\r</code> 作为行尾符。现代 macOS 采用了 Unix 标准的 <code>\n</code>。</li>
+<li>支持忽略特定选择器或属性。</li>
+<li>可配置媒体查询中的单位转换。</li>
+<li>支持横屏模式下的视口单位转换。</li>
+<li>提供特殊注释（如 <code>/* px-to-viewport-ignore */</code>）以跳过特定行的转换。</li>
 </ul>
-<p>由于这些差异，在不同系统之间传输文本文件时，行尾符的转换可能会带来困扰，导致文本解析错误或多余空行。</p>
-<hr>
-<h3 id="4-跨平台文件处理中的行尾符兼容性问题"><a href="#4-跨平台文件处理中的行尾符兼容性问题" class="headerlink" title="4. 跨平台文件处理中的行尾符兼容性问题"></a>4. 跨平台文件处理中的行尾符兼容性问题</h3><p>在编写跨平台代码时，行尾符的不兼容常常引发意想不到的错误。例如：</p>
+<h3 id="postcss-px-to-viewport-8-plugin"><a href="#postcss-px-to-viewport-8-plugin" class="headerlink" title="postcss-px-to-viewport-8-plugin"></a>postcss-px-to-viewport-8-plugin</h3><p><code>postcss-px-to-viewport-8-plugin</code> 是基于 <code>postcss-px-to-viewport</code> 的一个分支，专为 PostCSS 8 及以上版本优化。由于 PostCSS 8 重构了 API，旧版本插件可能不兼容新版本构建工具，因此该插件应运而生。它保留了原插件的核心功能，同时适配了现代前端生态。<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/postcss-px-to-viewport-8-plugin">postcss-px-to-viewport-8-plugin</a></p>
+<p><strong>特点</strong>：</p>
 <ul>
-<li><strong>读取 Windows 文件</strong>：如果在 Unix 系统中读取 Windows 格式的文本文件，<code>\r\n</code> 中的 <code>\r</code> 可能被视为多余字符，导致不符合预期的文件格式。</li>
-<li><strong>写入跨平台文件</strong>：在处理配置文件或代码文件时，不同的行尾符可能影响文件的解析和执行。</li>
+<li>与 PostCSS 8+ 完全兼容。</li>
+<li>支持动态视口宽度配置（例如根据文件名区分移动端和桌面端）。</li>
+<li>提供更灵活的属性过滤和忽略规则。</li>
+<li>适用于 Vite、Webpack 等现代构建工具。</li>
 </ul>
-<p>为解决这些问题，通常在文件处理时，需将行尾符统一为 <code>\n</code>，以适应 Unix 和现代 macOS 的格式。</p>
-<hr>
-<h3 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h3><p>理解 <code>\r</code>、<code>\n</code> 和 <code>\r\n</code> 的区别有助于在处理文本文件、流数据、跨平台日志记录时避免不必要的麻烦：</p>
-<ul>
-<li><strong>Unix&#x2F;Linux 和 macOS 系统</strong>：使用 <code>\n</code>。</li>
-<li><strong>Windows 系统</strong>：使用 <code>\r\n</code>。</li>
-<li><strong>旧式 Mac OS</strong>：使用 <code>\r</code>（在现代 macOS 中已被弃用）。</li>
+<h3 id="postcss-px-to-viewport-配置"><a href="#postcss-px-to-viewport-配置" class="headerlink" title="postcss-px-to-viewport 配置"></a>postcss-px-to-viewport 配置</h3><p>插件配置示例如下（个人项目使用到了 <code>react-vant</code> 组件库，并分开配置）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; defineConfig &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vite&quot;</span>;<br><span class="hljs-keyword">import</span> postcssPxToViewport <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;postcss-px-to-viewport-8-plugin&quot;</span>; <span class="hljs-comment">// 将 px 单位转为 vw，适配移动端</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(&#123;<br>  <span class="hljs-attr">css</span>: &#123;<br>    <span class="hljs-comment">// PostCSS 配置（用于 autoprefixer 和 pxtorem）</span><br>    <span class="hljs-attr">postcss</span>: &#123;<br>      <span class="hljs-attr">plugins</span>: [<br>        <span class="hljs-title function_">autoprefixer</span>(), <span class="hljs-comment">// 自动添加浏览器前缀</span><br>        <span class="hljs-title function_">postcssPxToViewport</span>(&#123;<br>          <span class="hljs-attr">unitToConvert</span>: <span class="hljs-string">&quot;px&quot;</span>, <span class="hljs-comment">// 需要转换的单位，默认为&quot;px&quot;</span><br>          <span class="hljs-attr">viewportWidth</span>: <span class="hljs-number">375</span>, <span class="hljs-comment">// 设计稿的视口宽度</span><br>          <span class="hljs-attr">unitPrecision</span>: <span class="hljs-number">5</span>, <span class="hljs-comment">// 单位转换后保留的精度</span><br>          <span class="hljs-attr">propList</span>: [<span class="hljs-string">&quot;*&quot;</span>], <span class="hljs-comment">// 能转化为vw的属性列表</span><br>          <span class="hljs-attr">viewportUnit</span>: <span class="hljs-string">&quot;vmin&quot;</span>, <span class="hljs-comment">// 希望使用的视口单位</span><br>          <span class="hljs-attr">fontViewportUnit</span>: <span class="hljs-string">&quot;vmin&quot;</span>, <span class="hljs-comment">// 字体使用的视口单位</span><br>          <span class="hljs-attr">selectorBlackList</span>: [], <span class="hljs-comment">// 需要忽略的CSS选择器，不会转为视口单位，使用原有的px等单位。</span><br>          <span class="hljs-attr">minPixelValue</span>: <span class="hljs-number">1</span>, <span class="hljs-comment">// 设置最小的转换数值，只有大于1的值会被转换</span><br>          <span class="hljs-attr">mediaQuery</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 媒体查询里的单位是否需要转换单位</span><br>          <span class="hljs-attr">replace</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">//  是否直接更换属性值，而不添加备用属性</span><br>          <span class="hljs-attr">exclude</span>: [<span class="hljs-regexp">/node_modules/</span>], <span class="hljs-comment">// 忽略某些文件夹下的文件或特定文件</span><br>          <span class="hljs-attr">include</span>: <span class="hljs-literal">undefined</span>, <span class="hljs-comment">// 如果设置了include，那将只有匹配到的文件才会被转换</span><br>          <span class="hljs-attr">landscape</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 是否添加根据 landscapeWidth 生成的媒体查询条件 @media (orientation: landscape)</span><br>          <span class="hljs-attr">landscapeUnit</span>: <span class="hljs-string">&quot;vw&quot;</span>, <span class="hljs-comment">// 横屏时使用的单位</span><br>          <span class="hljs-attr">landscapeWidth</span>: <span class="hljs-number">667</span>, <span class="hljs-comment">// 横屏aa时使用的视口宽度</span><br>        &#125;),<br>        <span class="hljs-title function_">postcssPxToViewport</span>(&#123;<br>          <span class="hljs-attr">viewportWidth</span>: <span class="hljs-number">375</span>,<br>          <span class="hljs-attr">viewportUnit</span>: <span class="hljs-string">&quot;vmin&quot;</span>,<br>          <span class="hljs-attr">fontViewportUnit</span>: <span class="hljs-string">&quot;vmin&quot;</span>,<br>          <span class="hljs-attr">exclude</span>: <span class="hljs-literal">undefined</span>,<br>          <span class="hljs-attr">include</span>: [<span class="hljs-regexp">/node_modules\/react-vant/i</span>],<br>          <span class="hljs-attr">landscapeWidth</span>: <span class="hljs-number">667</span>,<br>        &#125;),<br>      ],<br>    &#125;,<br>  &#125;,<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li><strong>浏览器兼容性</strong>：视口单位在现代浏览器中支持良好，但在旧版 IE 和 Android 浏览器中可能需要额外的 polyfill 或回退方案。</li>
+<li><strong>设计稿一致性</strong>：确保开发团队使用的设计稿宽度与插件配置的 <code>viewportWidth</code> 一致，避免比例计算错误。</li>
+<li><strong>性能影响</strong>：在大型项目中，转换大量 CSS 规则可能略微增加构建时间，建议通过 <code>exclude</code> 忽略不必要的文件。</li>
+<li><strong>调试技巧</strong>：使用 <code>/* px-to-viewport-ignore */</code> 或 <code>selectorBlackList</code> 精确控制转换范围，方便调试复杂样式。</li>
+<li><strong>PostCSS 版本</strong>：如果使用 PostCSS 8 及以上，优先选择 <code>postcss-px-to-viewport-8-plugin</code> 以确保兼容性。</li>
+<li><strong>include 功能未实现</strong>：虽然文档中提到 <code>include</code> 选项可以指定只转换特定文件（例如只处理 <code>src/mobile/</code> 下的文件），但根据 GitHub 页面和相关讨论，<code>postcss-px-to-viewport</code> 和 <code>postcss-px-to-viewport-8-plugin</code> 的 <code>include</code> 功能并未完全实现。个人可能需要依赖 <code>exclude</code> 配置或通过文件分离等其他工作流来实现类似效果。此外，这两个插件的社区已停止维护和更新。因此，本人选择下载源码，自行实现 <code>include</code> 功能，并将其部署到私有仓库中，作为替换插件使用。</li>
 </ul>
 
                 
@@ -328,8 +327,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%89%8D%E7%AB%AF/%E7%9F%A5%E8%AF%86%E7%82%B9/" class="category-chain-item">知识点</a>
+  
+  
+
   
 
       </span>
@@ -343,11 +349,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/LF/" class="print-no-link">#LF</a>
+        <a href="/tags/css/" class="print-no-link">#css</a>
       
-        <a href="/tags/CR/" class="print-no-link">#CR</a>
-      
-        <a href="/tags/CRLF/" class="print-no-link">#CRLF</a>
+        <a href="/tags/postcss/" class="print-no-link">#postcss</a>
       
     </div>
   
@@ -359,8 +363,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>换行回车</div>
-      <div>https://ywchenwy.github.io/2024/11/11/换行回车/</div>
+      <div>postcss-px-to-viewport 实现响应式布局</div>
+      <div>https://ywchenwy.github.io/2025/05/17/postcss-px-to-viewport-实现响应式布局/</div>
     </div>
     <div class="license-meta">
       
@@ -372,7 +376,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年11月11日</div>
+          <div>2025年5月17日</div>
         </div>
       
       
@@ -404,18 +408,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/05/17/postcss-px-to-viewport-%E5%AE%9E%E7%8E%B0%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/" title="postcss-px-to-viewport 实现响应式布局">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">postcss-px-to-viewport 实现响应式布局</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/11/10/XMLHttpRequest%E3%80%81Fetch%E3%80%81Axios%E4%B8%8EAJAX/" title="XMLHttpRequest、Fetch、Axios与AJAX">
-                        <span class="hidden-mobile">XMLHttpRequest、Fetch、Axios与AJAX</span>
+                      <a href="/2024/11/11/%E6%8D%A2%E8%A1%8C%E5%9B%9E%E8%BD%A6/" title="换行回车">
+                        <span class="hidden-mobile">换行回车</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
